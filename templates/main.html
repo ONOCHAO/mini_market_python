@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Личный кабинет — История покупок</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #f2f3f5;
+    }
+    header {
+      background-color: #005bff;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 30px;
+    }
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .order {
+      border-bottom: 1px solid #e0e0e0;
+      padding: 15px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .order:last-child {
+      border-bottom: none;
+    }
+    .details {
+      flex: 1;
+    }
+    .name {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+    .info {
+      font-size: 14px;
+      color: #666;
+    }
+    .price {
+      font-size: 16px;
+      color: #0077cc;
+    }
+    .status {
+      font-size: 13px;
+      background: #e2f0ff;
+      color: #005bff;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Личный кабинет</h1>
+  <p>История ваших покупок</p>
+</header>
+
+<div class="container">
+  <h2>Мои заказы</h2>
+
+	{% for item in items %}
+  <div class="card">
+  <div class="name">{{ item[1] }}</div>
+    <div class="desc">{{ item[2] }}</div>
+	<div class="price">{{ item[3] }} ₽</div>
+	<form action="/add" method="POST">
+		<input type="hidden" name="name" placeholder="Название товара">
+		<input type="hidden" name="descript" placeholder="описание">
+		<input type="hidden" name="price" placeholder="Цена">
+	</form>
+    
+   
+  </div>
+  {% endfor %}
+
+</div>
+
+</body>
+</html>
